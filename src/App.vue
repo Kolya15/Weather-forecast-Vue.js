@@ -1,24 +1,20 @@
 <template>
     <div id="app">
-        <input type="text" v-model="searchCity">
+        <HeaderComponent/>
+
 
         <p
             v-for="city in getSearchCity"
             :key="city.id"
         >
-            {{city.name}}
+            {{city.name}} {{city.id}}
         </p>
-        <!--        <select name="" id="">-->
-        <!--            <option-->
-        <!--                v-for="city in GET_LIST_CITY"-->
-        <!--                :key="city.id"-->
-        <!--            >{{city.name}}</option>-->
-        <!--        </select>-->
     </div>
 </template>
 
 <script>
 import {mapGetters} from 'vuex'
+import HeaderComponent from "./components/header";
 import {HTTP} from './api'
 
 export default {
@@ -38,8 +34,11 @@ export default {
            return []
         }
     },
+    components: {
+        HeaderComponent
+    },
     created() {
-        HTTP.get('weather?q=Голубинка&appid=7a44d3e3a278e49fbcb5dba603d8931e')
+        HTTP.get('weather?id=703448&appid=7a44d3e3a278e49fbcb5dba603d8931e')
     },
     mounted() {
         console.log(this.GET_CITY_LIST);
@@ -54,6 +53,5 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
 }
 </style>
