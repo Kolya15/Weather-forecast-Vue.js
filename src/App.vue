@@ -1,22 +1,24 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App" />
+        TEST
     </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import { HTTP } from './api'
+import {mapGetters} from 'vuex'
+import {HTTP} from './api'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  },
-  created () {
-    HTTP.get('weather?q=London&appid=7a44d3e3a278e49fbcb5dba603d8931e')
-  }
+    name: 'App',
+    computed: {
+        ...mapGetters(['GET_LIST_CITY'])
+    },
+    created() {
+        HTTP.get('weather?q=London&appid=7a44d3e3a278e49fbcb5dba603d8931e')
+    },
+    mounted() {
+        console.log(this.GET_LIST_CITY);
+    }
 }
 </script>
 
