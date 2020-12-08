@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import city from "../utils/city.list.json";
-// import city from '../utils/city.list.json'
+import cityList from "../utils/current.city.list.min.json"
+
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
-        listCity: JSON.parse(JSON.stringify(city))
+        cityList: JSON.parse(JSON.stringify(cityList))
     },
     mutations: {},
     actions: {},
     getters: {
-        GET_LIST_CITY: state => state.listCity
+        GET_CITY_LIST: state => state.cityList
     },
-    modules: {}
 })
